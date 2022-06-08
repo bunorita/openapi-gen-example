@@ -176,7 +176,7 @@ type ServerInterface interface {
 	DeletePet(ctx echo.Context, petId int64, params DeletePetParams) error
 	// Find pet by ID
 	// (GET /pet/{petId})
-	GetPetById(ctx echo.Context, petId int64) error
+	GetPetById(ctx echo.Context, petId uint64) error
 	// Updates a pet in the store with form data
 	// (POST /pet/{petId})
 	UpdatePetWithForm(ctx echo.Context, petId int64) error
@@ -330,7 +330,7 @@ func (w *ServerInterfaceWrapper) DeletePet(ctx echo.Context) error {
 func (w *ServerInterfaceWrapper) GetPetById(ctx echo.Context) error {
 	var err error
 	// ------------- Path parameter "petId" -------------
-	var petId int64
+	var petId uint64
 
 	err = runtime.BindStyledParameterWithLocation("simple", false, "petId", runtime.ParamLocationPath, ctx.Param("petId"), &petId)
 	if err != nil {

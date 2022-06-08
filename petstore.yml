@@ -169,6 +169,7 @@ paths:
           schema:
             type: integer
             format: int64
+            x-go-type: uint64
       responses:
         '200':
           description: successful operation
